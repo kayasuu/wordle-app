@@ -19,3 +19,51 @@
   p {
     display: inline;
   }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-shrink: 1;
+    
+
+}
+.key {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(249, 148, 165, 0.428);
+    color: rgb(255, 122, 144);
+    border-radius: 50px;
+    border-color: rgb(255, 122, 144);
+    display: flex;
+    flex-shrink: 1;
+
+
+
+}
+.row {
+    display: flex;
+    justify-content: center;
+
+}
+
+#row-2 .key {
+    margin: 0px 5px 0px 0px;
+}
+
+
+#spacebar {
+    width: 200px;
+}
+
+#del {
+    width: 100px;
+}
+#output {
+    align-self: center;
+    width: 550px;
+    height: 100px;
+    display: flex;
+    flex-shrink: 1;
+} 

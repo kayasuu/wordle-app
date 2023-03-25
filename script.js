@@ -49,6 +49,8 @@ function checkWord(inputWord) {
     let inputChar = inputWord[i];
     let randomChar = randomWord[i];
 
+    
+
     //checks same position
     if (inputChar === randomChar) {
       char.classList.add('correct');
@@ -57,8 +59,10 @@ function checkWord(inputWord) {
     } else if (randomWord.includes(inputChar)) {
       char.classList.add('close');
 
+
     } else {
       char.classList.add('incorrect');
+
     }
 
     char.textContent = inputChar;
