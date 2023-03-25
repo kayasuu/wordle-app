@@ -1,0 +1,21 @@
+.correct {
+    color: green;
+  }
+  
+  .close {
+    color: orange;
+  }
+  
+  .incorrect {
+    color: red;
+  }
+
+  #grid-container {
+    display: grid;
+    grid-template-columns: 5;
+    grid-template-rows: 6;
+  }
+
+  p {
+    display: inline;
+  }
