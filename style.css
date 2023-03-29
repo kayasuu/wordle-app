@@ -1,20 +1,38 @@
-.correct {
-    color: green;
-  }
-  
-  .close {
-    color: orange;
-  }
-  
-  .incorrect {
-    color: red;
-  }
 
   #grid-container {
-    display: grid;
-    grid-template-columns: 5;
-    grid-template-rows: 6;
+    display: flex;
+    /* width: 80%; */
+    max-width: 400px;
+    flex-wrap: wrap;
+
   }
+
+  .grid-cell {
+    display: flex;
+    height: 80px;
+    width: 80px;
+    padding: 1em;
+    box-sizing: border-box;
+    /* border: 2px black solid; */
+    align-content: center;
+}
+
+.correct {
+  color: white;
+  background-color: green;
+}
+
+.close {
+  color: orange;
+  background-color: yellow;
+}
+
+.incorrect {
+  color: white;
+  background-color: red;
+}
+
+
 
   p {
     display: inline;
@@ -32,15 +50,14 @@
 .key {
     width: 50px;
     height: 50px;
-    background-color: rgba(249, 148, 165, 0.428);
-    color: rgb(255, 122, 144);
-    border-radius: 50px;
     border-color: rgb(255, 122, 144);
     display: flex;
     flex-shrink: 1;
+}
 
-
-
+.row2 {
+  display: flex;
+  flex-wrap: wrap;
 }
 .row {
     display: flex;
@@ -60,10 +77,3 @@
 #del {
     width: 100px;
 }
-#output {
-    align-self: center;
-    width: 550px;
-    height: 100px;
-    display: flex;
-    flex-shrink: 1;
-} 

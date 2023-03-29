@@ -14,63 +14,73 @@
     //else, turn char grey.
 
 
-const gridContainer = document.getElementById('grid-container');
-const userInput = document.getElementById('user-input');
-const enterButton = document.getElementById('enter-button');
-let keys = document.getElementsByClassName('key');
-const row = document.createElement('div');
-row.classList.add('row');
 
-const words = ['apple', 'table', 'chair', 'house', 'beach'];
-const randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
 
-enterButton.addEventListener('click', () => {
-  const inputWord = userInput.value.toUpperCase();
-  if (inputWord.length === 5) {
-    checkWord(inputWord);
-    userInput.value = '';
-  } else {
-    alert('Please enter a 5-letter word');
-  }
-});
-
-// Function to check the input word against the random word
-function checkWord(inputWord) {
-      // Create a new row element for the grid
-      const row = document.createElement('div');
-      row.classList.add('row');
-
-      
-
-  for (let i = 0; i < 5; i++) {
-    const char = document.createElement('p');
-
-    //declariing vars for each character at certain position eg. inputWord[a] and randomWord[a]
-    let inputChar = inputWord[i];
-    let randomChar = randomWord[i];
-
+    const gridContainer = document.getElementById('grid-container');
+    const userInput = document.getElementById('user-input');
+    const enterButton = document.getElementById('enter-button');
+    const words = ['apple', 'table', 'chair', 'house', 'beach'];
+    const randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
     
-
-    //checks same position
-    if (inputChar === randomChar) {
-      char.classList.add('correct');
-
-    //check includes
-    } else if (randomWord.includes(inputChar)) {
-      char.classList.add('close');
-
-
-    } else {
-      char.classList.add('incorrect');
-
+    enterButton.addEventListener('click', () => {
+      const inputWord = userInput.value.toUpperCase();
+      if (inputWord.length === 5) {
+        checkWord(inputWord);
+        userInput.value = '';
+      } else {
+        alert('Please enter a 5-letter word');
+      }
+    });
+    
+    function checkWord(inputWord) {
+      const row2 = document.createElement('div');
+      row2.classList.add('row');
+      let isCorrect = true;
+    
+      // Create a new grid cell for each character of the input word
+      for (let i = 0; i < inputWord.length; i++) {
+        let gridElement = document.createElement('div');
+        gridElement.classList.add('grid-cell');
+        gridElement.textContent = inputWord[i];
+        row2.appendChild(gridElement);
+    
+        const inputChar = inputWord[i];
+        const randomChar = randomWord[i];
+        const keyElement = document.querySelector(`#key-${inputChar.toUpperCase()}`);
+        const gridPos = row2.childNodes[i];
+    
+        // If the characters match, add the 'correct' class to the grid cell and keyboard key
+        if (inputChar === randomChar) {
+          gridPos.classList.add('correct');
+          keyElement.classList.add('correct');
+        }
+        // If the input character is included in the random word but in a different position, add the 'close' class
+        else if (randomWord.includes(inputChar)) {
+          gridPos.classList.add('close');
+          keyElement.classList.add('close');
+          isCorrect = false;
+        }
+        // If the characters don't match, add the 'incorrect' class
+        else {
+          gridPos.classList.add('incorrect');
+          keyElement.classList.add('incorrect');
+          isCorrect = false;
+        }
+      }
+    
+      // Append the new row to the grid container
+      gridContainer.appendChild(row2);
+    
+      // Check if the user has won the game
+      if (isCorrect) {
+        alert('Congratulations! You won!');
+      }
     }
 
-    char.textContent = inputChar;
-    row.appendChild(char);
-  }
+//render row
+// update array with guesses
+//take most recent item in guess array, pass into render row function. 
 
-  gridContainer.appendChild(row);
-};
 
 //obtained from W4D1, changed textContent to value
 let type = () => {
