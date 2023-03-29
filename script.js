@@ -17,20 +17,26 @@
 
 
     const gridContainer = document.getElementById('grid-container');
+    let header = document.getElementById('header');
     const userInput = document.getElementById('user-input');
     const enterButton = document.getElementById('enter-button');
     const words = ['apple', 'table', 'chair', 'house', 'beach'];
     const randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
     
-    enterButton.addEventListener('click', () => {
-      const inputWord = userInput.value.toUpperCase();
-      if (inputWord.length === 5) {
-        checkWord(inputWord);
-        userInput.value = '';
-      } else {
-        alert('Please enter a 5-letter word');
-      }
-    });
+    function startGame() {
+      // Reset the grid container and user input
+      gridContainer.innerHTML = '';
+      userInput.value = '';
+    
+      // Reset the tries counter
+      let triesCounter = document.getElementById('triesCounter');
+      triesCounter.textContent = '6';
+    
+      // Choose a new random word
+      const randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
+    }
+    
+    startGame();
     
     function checkWord(inputWord) {
       const row2 = document.createElement('div');
@@ -76,10 +82,54 @@
         alert('Congratulations! You won!');
       }
     }
+    
+    function gameOver() {
+      let p = document.createElement('p');
+      p.textContent = `Game Over!`;
+      header.appendChild(p);
+    
+      let playAgain = document.createElement('button');
+      playAgain.innerHTML = 'Play Again';
+      header.appendChild(playAgain);
+    
+      playAgain.addEventListener('click', () => {
+        // Reset the grid container by setting its innerHTML to an empty string
+        gridContainer.innerHTML = '';
+        // Remove the "Game Over!" message and "Play Again" button
+        p.remove();
+        playAgain.remove();
+        // Call the function to start the game again
+        startGame();
+      });
+    }
+  enterButton.addEventListener('click', () => {
+
+    const inputWord = userInput.value.toUpperCase();
+    if (inputWord.length === 5) {
+      checkWord(inputWord);
+      userInput.value = '';
+    } else {
+      alert('Please enter a 5-letter word');
+    }
+    let triesCounter = document.getElementById('triesCounter');
+    let currentNumber = parseInt(triesCounter.innerHTML);
+    let newNumber = currentNumber - 1;
+    triesCounter.textContent = newNumber.toString();
+  
+    if (triesCounter.textContent == 0){
+      gameOver();
+    }
+  
+  
+  });
+
 
 //render row
 // update array with guesses
 //take most recent item in guess array, pass into render row function. 
+
+
+
 
 
 //obtained from W4D1, changed textContent to value
@@ -103,3 +153,7 @@ let type = () => {
   type();
 
 
+
+
+
+  
