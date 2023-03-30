@@ -21,6 +21,7 @@
     const userInput = document.getElementById('user-input');
     const enterButton = document.getElementById('enter-button');
     let playAgain = document.createElement('button');
+    const keys = document.querySelectorAll('.key');
     playAgain.innerHTML = 'Play Again';
     const words = ['apple', 'table', 'chair', 'house', 'beach'];
     const randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
@@ -49,6 +50,7 @@
     
       // Choose a new random word
       randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
+
     }
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -164,6 +166,7 @@
 
 
 //obtained from W4D1, changed textContent to value
+
 let type = () => {
     for (let key of keys) {
       key.addEventListener('click', function() {
@@ -182,7 +185,7 @@ let type = () => {
     }
   }; 
 
-
+type();
 
 
 //render row
