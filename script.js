@@ -20,6 +20,8 @@
     let header = document.getElementById('header');
     const userInput = document.getElementById('user-input');
     const enterButton = document.getElementById('enter-button');
+    let playAgain = document.createElement('button');
+    playAgain.innerHTML = 'Play Again';
     const words = ['apple', 'table', 'chair', 'house', 'beach'];
     const randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
     
@@ -27,16 +29,31 @@
       // Reset the grid container and user input
       gridContainer.innerHTML = '';
       userInput.value = '';
+
+      document.getElementById('finalMessage');
+      finalMessage.innerHTML = "";
     
       // Reset the tries counter
       let triesCounter = document.getElementById('triesCounter');
-      triesCounter.textContent = '6';
+      triesCounter.textContent = '5';
+
+        // Reset key classes
+      let keys2 = document.querySelectorAll('.key');
+      for (let i = 0; i < keys2.length; i++) {
+      keys2[i].classList.remove('correct', 'close', 'incorrect');
+  }
+
+  
+      userInput.style.display = 'block';
+      enterButton.style.display = 'block';
     
       // Choose a new random word
-      const randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
+      randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
     }
-    
-    startGame();
+
+      document.addEventListener('DOMContentLoaded', () => {
+      startGame();
+    });
     
     function checkWord(inputWord) {
       const row2 = document.createElement('div');
@@ -46,14 +63,15 @@
       // Create a new grid cell for each character of the input word
       for (let i = 0; i < inputWord.length; i++) {
         let gridElement = document.createElement('div');
+
         gridElement.classList.add('grid-cell');
         gridElement.textContent = inputWord[i];
         row2.appendChild(gridElement);
     
         const inputChar = inputWord[i];
         const randomChar = randomWord[i];
-        const keyElement = document.querySelector(`#key-${inputChar.toUpperCase()}`);
         const gridPos = row2.childNodes[i];
+        const keyElement = document.querySelector(`#key-${inputChar.toUpperCase()}`);
     
         // If the characters match, add the 'correct' class to the grid cell and keyboard key
         if (inputChar === randomChar) {
@@ -79,29 +97,54 @@
     
       // Check if the user has won the game
       if (isCorrect) {
-        alert('Congratulations! You won!');
+
+        youWin()
+
+      } else {
+        let triesCounter = document.getElementById('triesCounter');
+    let currentNumber = parseInt(triesCounter.innerHTML);
+    let newNumber = currentNumber - 1;
+    triesCounter.textContent = newNumber.toString();
+  
+    if (triesCounter.textContent == 0){
+      gameOver();
+    }
+
       }
     }
     
-    function gameOver() {
-      let p = document.createElement('p');
-      p.textContent = `Game Over!`;
-      header.appendChild(p);
-    
-      let playAgain = document.createElement('button');
-      playAgain.innerHTML = 'Play Again';
+    function endGame() {
+      const finalMessage = document.getElementById('finalMessage');
       header.appendChild(playAgain);
     
+      userInput.style.display = 'none';
+      enterButton.style.display = 'none';
+    
       playAgain.addEventListener('click', () => {
-        // Reset the grid container by setting its innerHTML to an empty string
-        gridContainer.innerHTML = '';
-        // Remove the "Game Over!" message and "Play Again" button
-        p.remove();
+
+        // Remove the "Play Again" button
         playAgain.remove();
+        
+
+
         // Call the function to start the game again
         startGame();
       });
     }
+
+    function gameOver() {
+      const finalMessage = document.getElementById('finalMessage');
+      finalMessage.innerHTML = `Game Over! The correct answer was ${randomWord}`;
+  endGame();
+      endGame();
+    }
+
+    function youWin(){
+      const finalMessage = document.getElementById('finalMessage');
+      finalMessage.innerHTML = `Congratulations!! You WIN!`
+      endGame();
+    }
+
   enterButton.addEventListener('click', () => {
 
     const inputWord = userInput.value.toUpperCase();
@@ -111,22 +154,10 @@
     } else {
       alert('Please enter a 5-letter word');
     }
-    let triesCounter = document.getElementById('triesCounter');
-    let currentNumber = parseInt(triesCounter.innerHTML);
-    let newNumber = currentNumber - 1;
-    triesCounter.textContent = newNumber.toString();
-  
-    if (triesCounter.textContent == 0){
-      gameOver();
-    }
+    
   
   
   });
-
-
-//render row
-// update array with guesses
-//take most recent item in guess array, pass into render row function. 
 
 
 
@@ -150,8 +181,13 @@ let type = () => {
       });
     }
   }; 
-  type();
 
+
+
+
+//render row
+// update array with guesses
+//take most recent item in guess array, pass into render row function. 
 
 
 
