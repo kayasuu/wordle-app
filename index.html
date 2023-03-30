@@ -11,44 +11,22 @@
     <body>
         <header id="header">
         <h1>Word Guesser</h1>
-        <h2>Guess the word in 5 tries or less!</h2>
+        <h2>Guess the word in 6 tries or less!</h2>
         <h3>Tries remaining: <span id="triesCounter">6</span></h3>
+        <h3 id="finalMessage"></h3>
+
     </header>
         <div id="grid-container">
-                <!-- <div class="grid-cell" id="Cell-1"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div> -->
-              </div>
+                <div class="grid-row"></div>
+                <div class="grid-row"></div>
+                <div class="grid-row"></div>
+                <div class="grid-row"></div>
+                <div class="grid-row"></div>
+                <div class="grid-row"></div>
+         </div>
 
         </div>
-        <input id="user-input" type="text" maxlength="5" />
+        <input id="user-input" type="text" maxlength="5" oninput="this.value = this.value.toUpperCase()" />
         <button id="enter-button">Enter</button>
 
         <div class="keyboard">
@@ -76,6 +54,7 @@
                    <button class="key" id="key-L">L</button>
                </div>
                <div class="row" id="row-2">
+                <button class="key">&#9249;</button>
                    <button class="key" id="key-Z">Z</button>
                    <button class="key" id="key-X">X</button>
                    <button class="key" id="key-C">C</button>
@@ -83,11 +62,12 @@
                    <button class="key" id="key-B">B</button>
                    <button class="key" id="key-N">N</button>
                    <button class="key" id="key-M">M</button>
+                   <button class="key" id="del">&#9249; all</button>
                </div>
                <div class="row" id="row-3">
-                   <button class="key">&#9249;</button>
+                   
                    <button class="key" id="spacebar"> </button>
-                   <button class="key" id="del">&#9249; all</button>
+                   
                </div>
            </div>
         <script src="/Users/sude/Desktop/SEI-Course/Project1/wordle-app/script.js" async defer></script>

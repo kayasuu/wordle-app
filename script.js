@@ -1,30 +1,14 @@
-// minimum viable product:
-//- add a list of keywords array
-// add a keyboard 
-
-// choose one random word and let this be the wordle
-
-// input letters from keyboard into input
-//when the length of this array reaches 5...can no longer input
-
-//"enter" button triggers function
-//function: check to see if the characters in array 1 match the letters in the wordleturn gren etc)
-    // if the position of the char correct, add a class to the key saying correct (and then the class makes chars chage colour)
-    // if position of char is incorrect but char is in the word, turn char yellow
-    //else, turn char grey.
-
-
-
 
     const gridContainer = document.getElementById('grid-container');
     let header = document.getElementById('header');
     const userInput = document.getElementById('user-input');
     const enterButton = document.getElementById('enter-button');
     let playAgain = document.createElement('button');
-    const keys = document.querySelectorAll('.key');
+    playAgain.setAttribute('id','playAgain');
     playAgain.innerHTML = 'Play Again';
+    const keys = document.querySelectorAll('.key');
     const words = ['apple', 'table', 'chair', 'house', 'beach'];
-    const randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
+    let randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
     
     function startGame() {
       // Reset the grid container and user input
@@ -36,7 +20,7 @@
     
       // Reset the tries counter
       let triesCounter = document.getElementById('triesCounter');
-      triesCounter.textContent = '5';
+      triesCounter.textContent = '6';
 
         // Reset key classes
       let keys2 = document.querySelectorAll('.key');
@@ -53,9 +37,7 @@
 
     }
 
-      document.addEventListener('DOMContentLoaded', () => {
-      startGame();
-    });
+    startGame();
     
     function checkWord(inputWord) {
       const row2 = document.createElement('div');

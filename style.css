@@ -1,45 +1,35 @@
 
-  #grid-container {
-    display: flex;
-    /* width: 80%; */
-    flex-wrap: wrap;
-    padding: 5px;
-    height: 300px;
-    width: 300px;
 
 
-  }
+#grid-container {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 10px;
+  width: 500px;
+  height: 450px;
+  border: 2px solid black;
+  padding: 10px;
+}
 
+.grid-row {
+  display: grid;
+  border: 2px solid black;
+}
   header {
     text-align: center;
   }
 
   .grid-cell {
-    display: flex;
+    display: grid;
     height:50px;
     width: 50px;
-    padding: 5px 0 0 0;
-    /* box-sizing: border-box; */
-    /* border: 2px black solid; */
+    box-sizing: border-box;
+    border: 2px black solid;
     align-self: flex-end;
+    margin: 7px 5px 0 5px;
+
 
 }
-
-.correct {
-  color: white;
-  background-color: green;
-}
-
-.close {
-  color: orange;
-  background-color: yellow;
-}
-
-.incorrect {
-  color: white;
-  background-color: red;
-}
-
 
 
   p {
@@ -53,8 +43,32 @@
     align-content: center;
     flex-shrink: 1;
     
-
 }
+
+
+.row2 {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.correct {
+  color: white;
+  background-color: rgba(0, 128, 0, 0.642);
+}
+
+.close {
+  color: rgba(255, 255, 255, 0.745);
+  background-color: rgba(255, 149, 0, 0.775);
+}
+
+.incorrect {
+  color: white;
+  background-color: rgba(255, 0, 0, 0.703);
+}
+
+
+
 .key {
     width: 50px;
     height: 50px;
@@ -63,10 +77,6 @@
     flex-shrink: 1;
 }
 
-.row2 {
-  display: flex;
-  flex-wrap: wrap;
-}
 .row {
     display: flex;
     justify-content: center;
@@ -86,3 +96,30 @@
     width: 100px;
 }
 
+/* button {
+  background-color: rgba(255, 255, 255, 0.447);
+} */
+
+#enter-button {
+  background-color: pink;
+  margin-bottom: 10px;
+}
+
+#playAgain {
+  background-color: pink;
+  margin-bottom: 10px;
+}
+
+
+/* #grid-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 350px;
+  padding: 5px;
+  margin: 0 auto;
+  border: solid black 2px;
+  margin-bottom: 20px;
+} */
