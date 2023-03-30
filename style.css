@@ -1,27 +1,25 @@
 
 
-
 #grid-container {
   display: grid;
   grid-template-rows: repeat(6, 1fr);
   gap: 10px;
-  width: 500px;
+  width: 400px;
   height: 450px;
-  border: 2px solid black;
-  padding: 10px;
+  padding: 2px;
+  background-color: #f3efe0;
+  align-self: center;
 }
 
-.grid-row {
+/* .grid-row {
   display: grid;
   border: 2px solid black;
-}
-  header {
-    text-align: center;
-  }
+} */
+
 
   .grid-cell {
-    display: grid;
-    height:50px;
+    display: flex;
+    height: 50px;
     width: 50px;
     box-sizing: border-box;
     border: 2px black solid;
@@ -30,23 +28,27 @@
 
 
 }
-
-
-  p {
+  p, h3 {
     display: inline;
+    text-align: center;
   }
 
-  body {
+h3 {
+padding: 5px;
+}
+
+  section {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
     flex-shrink: 1;
+    background-color: #8fb7b0;
     
 }
 
 
-.row2 {
+.rowElement {
   display: flex;
   align-items: center;
   padding: 5px;
@@ -54,25 +56,31 @@
 
 .correct {
   color: white;
-  background-color: rgba(0, 128, 0, 0.642);
+  background-color: #2a9d8f;
+  border-color: #264653;
+  
 }
 
 .close {
   color: rgba(255, 255, 255, 0.745);
-  background-color: rgba(255, 149, 0, 0.775);
+  background-color: #e9c46a;
+  border-color: #f4a261;
 }
 
 .incorrect {
   color: white;
-  background-color: rgba(255, 0, 0, 0.703);
+  background-color: #9e2a2b;
+  border-color: #9b2226;
 }
 
-
+button {
+  background-color: white;
+}
 
 .key {
     width: 50px;
     height: 50px;
-    border-color: rgb(255, 122, 144);
+    border-color: #597380;
     display: flex;
     flex-shrink: 1;
 }
@@ -80,46 +88,114 @@
 .row {
     display: flex;
     justify-content: center;
+    align-items: center;
 
+}
+
+#row-0 .key {
+  margin: 0px 3px 0px 0px;
+}
+
+#row-1 .key {
+  margin: 0px 2px 0px 0px;
 }
 
 #row-2 .key {
     margin: 0px 5px 0px 0px;
 }
 
-
-#spacebar {
-    width: 200px;
+.keyboard {
+  margin-top: 20px;
 }
 
 #del {
     width: 100px;
 }
 
-/* button {
-  background-color: rgba(255, 255, 255, 0.447);
-} */
+
+#user-input {
+  margin-top: 10px;
+  max-width: 800px;
+  display: flex;
+  align-self: center;
+  text-align: center;
+}
+
 
 #enter-button {
-  background-color: pink;
-  margin-bottom: 10px;
+  background-color: #e9b6b4;
+  height: 50px;
+  width: 100px;
+  margin-right: 5px;
 }
 
 #playAgain {
-  background-color: pink;
-  margin-bottom: 10px;
+  background-color: #2a9d8f;
+  border: none;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  animation: pulse 1s ease-in-out infinite;
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
-/* #grid-container {
-  display: flex;
-  flex-direction: column;
+/* Hide the pop-up container by default */
+#pop-up-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Style the pop-up content */
+#pop-up-container h2 {
+  margin-top: 0;
+}
+#pop-up-container p {
+  margin-bottom: 0;
+}
+
+/* Style the close button */
+#close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+header {
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  width: 300px;
-  height: 350px;
-  padding: 5px;
-  margin: 0 auto;
-  border: solid black 2px;
-  margin-bottom: 20px;
-} */
+  align-items: center; */
+  background-color: #f3efe0;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  padding: 10px;
+}
+
+#open-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
