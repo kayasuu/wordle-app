@@ -9,42 +9,30 @@
   padding: 2px;
   background-color: #f2e8cf;
   align-self: center;
-  margin: 0 0 20px 0;
+  margin: 10px 0 20px 0;
 }
-
-/* .grid-row {
-  display: grid;
-  border: 2px solid black;
-} */
-
 
   .grid-cell {
     display: flex;
     height: 50px;
     width: 50px;
+    padding: 5px;
     box-sizing: border-box;
     border: 2px black solid;
-    align-self: flex-end;
+    align-self: center;
     margin: 7px 5px 0 5px;
+    justify-content: center;
 
 
 }
-  p, h3 {
-    display: inline;
-    text-align: center;
-  }
 
-h3 {
-color: #F2E8CF;
-}
-
-  section {
+section {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
     flex-shrink: 1;
-    background-color: #335D6B;
+    background-color: #29444D;
     
 }
 
@@ -75,6 +63,10 @@ button {
   background-color: white;
 }
 
+.keyboard {
+  margin-top: 20px;
+}
+
 .key {
     width: 50px;
     height: 50px;
@@ -102,10 +94,6 @@ button {
     margin: 0px 5px 0px 0px;
 }
 
-.keyboard {
-  margin-top: 20px;
-}
-
 #del {
     width: 100px;
 }
@@ -117,6 +105,8 @@ button {
   display: flex;
   align-self: center;
   text-align: center;
+  background-color: #597380;
+  color: white;
 }
 
 
@@ -125,6 +115,8 @@ button {
   height: 50px;
   width: 100px;
   margin-right: 5px;
+  font-family: 'Caveat', cursive;
+  font-size: larger;
 }
 
 #playAgain {
@@ -135,8 +127,9 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: larger;
   animation: pulse 1s ease-in-out infinite;
+  font-family: 'Caveat', cursive;
 }
 
 @keyframes pulse {
@@ -152,9 +145,6 @@ button {
 }
 
 header {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   background-color: #f3efe0;
   text-align: center;
 }
@@ -163,6 +153,26 @@ h1 {
   margin: 0;
   padding: 10px;
   color: #1F2A2E;
+  font-family: 'Caveat', cursive;
+  font-size: 40px;
+}
+
+p, h3 {
+  display: inline;
+  text-align: center;
+}
+
+h3 {
+color: #F2E8CF;
+}
+
+#finalMessage {
+  font-size: 28px;
+}
+
+#triesCounter {
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
 }
 
 :empty {
