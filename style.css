@@ -42,6 +42,16 @@ section {
   align-items: center;
   padding: 5px;
 }
+.incorrect {
+  color: white;
+  background-color: #B80000;
+  }
+  
+
+.close {
+  color: rgba(255, 255, 255, 0.745);
+  background-color: #E2A26E;
+}
 
 .correct {
   color: white;
@@ -49,18 +59,11 @@ section {
   
 }
 
-.close {
-  color: rgba(255, 255, 255, 0.745);
-  background-color: #E2A26E;
-}
 
-.incorrect {
-  color: white;
-  background-color: #B80000;
-}
+
 
 button {
-  background-color: white;
+  background-color: #F2E8CF;
 }
 
 .keyboard {
@@ -162,6 +165,10 @@ p, h3 {
   text-align: center;
 }
 
+p {
+  color: #1F2A2E;
+}
+
 h3 {
 color: #F2E8CF;
 }
@@ -175,6 +182,11 @@ color: #F2E8CF;
   font-size: 30px;
 }
 
+#score {
+  margin-bottom: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 25px;
+}
 :empty {
   display: none;
 }
