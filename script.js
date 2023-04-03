@@ -1,154 +1,179 @@
 
-    const gridContainer = document.getElementById('grid-container');
-    let header = document.getElementById('header');
-    const userInput = document.getElementById('user-input');
-    const enterButton = document.getElementById('enter-button');
-    let playAgain = document.createElement('button');
+//Declarations and obtaining global elements, setting attributes
+  const gridContainer = document.getElementById('grid-container');
+  let h3 = document.getElementById('buttonAppend');
+  const userInput = document.getElementById('user-input');
+  const enterButton = document.getElementById('enter-button');
+  let playAgain = document.createElement('button');
     playAgain.setAttribute('id','playAgain');
     playAgain.innerHTML = 'Play Again';
-    const keys = document.querySelectorAll('.key');
-    const words = ['apple', 'table', 'chair', 'house', 'beach'];
-    let randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
-    
-    function startGame() {
-      // Reset the grid container and user input
+  const keys = document.querySelectorAll('.key');
+  let score = document.getElementById('score');
+  let triesCounter = document.getElementById('triesCounter');
+  let finalMessage = document.getElementById('finalMessage');
+  
+  let randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
+
+const popupContainer = document.getElementById('popup-container');
+const popupBtn = document.getElementById('popup-btn');
+const closeBtn = document.getElementById('close-btn');
+
+popupBtn.addEventListener('click', () => {
+  popupContainer.style.display = 'flex';
+});
+
+closeBtn.addEventListener('click', () => {
+  popupContainer.style.display = 'none';
+});
+
+//Funtion to Start New Game, resetting the contents of various elements
+  function startGame() {
+    // Reset the grid container, user input and any messages
       gridContainer.innerHTML = '';
       userInput.value = '';
-
-      document.getElementById('finalMessage');
-      finalMessage.innerHTML = "";
+      finalMessage.innerHTML = '';
     
-      // Reset the tries counter
-      let triesCounter = document.getElementById('triesCounter');
+    // Reset the tries counter
       triesCounter.textContent = '6';
 
-        // Reset key classes
+    // Reset key classes
       let keys2 = document.querySelectorAll('.key');
       for (let i = 0; i < keys2.length; i++) {
       keys2[i].classList.remove('correct', 'close', 'incorrect');
-  }
-
-  
+      }
+    // Re-display user input and enter button
       userInput.style.display = 'block';
       enterButton.style.display = 'block';
     
-      // Choose a new random word
+    // Choose a new random word
       randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
-
+      console.log(randomWord);
     }
 
-    startGame();
-    
+startGame();
+
+
+//Function to Check Word
     function checkWord(inputWord) {
-      const row2 = document.createElement('div');
-      row2.classList.add('row');
-      let isCorrect = true;
+    //Create Row element for the user input
+      const rowElement = document.createElement('div');
+      rowElement.classList.add('row');
     
-      // Create a new grid cell for each character of the input word
+    // Create a new grid cell element for each character of the input word, and append this to the row
       for (let i = 0; i < inputWord.length; i++) {
         let gridElement = document.createElement('div');
-
         gridElement.classList.add('grid-cell');
         gridElement.textContent = inputWord[i];
-        row2.appendChild(gridElement);
-    
+        rowElement.appendChild(gridElement);
+
+        //access the i'th character in inputWord and randomWord
         const inputChar = inputWord[i];
         const randomChar = randomWord[i];
-        const gridPos = row2.childNodes[i];
+
+        //access the i'th grid cell in the row that we created for color changing
+        const gridPos = rowElement.childNodes[i];
+
+        //select the exact key for the HTML keyboard
         const keyElement = document.querySelector(`#key-${inputChar.toUpperCase()}`);
+
     
-        // If the characters match, add the 'correct' class to the grid cell and keyboard key
+        // If the the characters match and are in the right positions, add the 'correct' class to the grid cell and keyboard key.
         if (inputChar === randomChar) {
           gridPos.classList.add('correct');
           keyElement.classList.add('correct');
         }
+
         // If the input character is included in the random word but in a different position, add the 'close' class
         else if (randomWord.includes(inputChar)) {
           gridPos.classList.add('close');
           keyElement.classList.add('close');
-          isCorrect = false;
+          // isCorrect = false;
         }
-        // If the characters don't match, add the 'incorrect' class
+
+        // Otherwise, add the 'incorrect' class
         else {
           gridPos.classList.add('incorrect');
           keyElement.classList.add('incorrect');
-          isCorrect = false;
+          // isCorrect = false;
         }
       }
     
       // Append the new row to the grid container
-      gridContainer.appendChild(row2);
+        gridContainer.appendChild(rowElement);
     
-      // Check if the user has won the game
-      if (isCorrect) {
-
-        youWin()
-
-      } else {
-        let triesCounter = document.getElementById('triesCounter');
-    let currentNumber = parseInt(triesCounter.innerHTML);
-    let newNumber = currentNumber - 1;
-    triesCounter.textContent = newNumber.toString();
-  
-    if (triesCounter.textContent == 0){
-      gameOver();
-    }
-
+      // Check if the user has won the game.
+        //if the user input matches the random word, go to function youWin()
+          if (inputWord === randomWord){
+            youWin()
+        //otherwise, deduct 1 from the tries counter
+        } else {
+          let currentNumber = parseInt(triesCounter.innerHTML); //turns into integer
+          let newNumber = currentNumber - 1;
+          triesCounter.textContent = newNumber.toString(); //back to string to append to page
+          
+          //if tries counter is zero, game over
+            if (triesCounter.textContent == 0){
+              gameOver();
+            }
+          }
       }
-    }
     
+    //When the game has ended:
     function endGame() {
-      const finalMessage = document.getElementById('finalMessage');
-      header.appendChild(playAgain);
+      //append button to play again
+        h3.appendChild(playAgain); 
+
+      //remove the option to input or enter a new word
+        userInput.style.display = 'none';
+        enterButton.style.display = 'none';
     
-      userInput.style.display = 'none';
-      enterButton.style.display = 'none';
-    
+      //when playAgain is clicked, remove the Play Again button and call the function to start again
       playAgain.addEventListener('click', () => {
-
-        // Remove the "Play Again" button
         playAgain.remove();
-        
-
-
-        // Call the function to start the game again
         startGame();
       });
     }
 
+    //When the player loses, change message to game over and reveal answer and trigger enddGame function
     function gameOver() {
-      const finalMessage = document.getElementById('finalMessage');
-      finalMessage.innerHTML = `Game Over! The correct answer was ${randomWord}`;
-  endGame();
-      endGame();
+        finalMessage.innerHTML = `Game Over! The correct answer was ${randomWord}`;
+        endGame();
     }
 
+    //When the player wins, display a winning message before triggering endGame function
     function youWin(){
-      const finalMessage = document.getElementById('finalMessage');
-      finalMessage.innerHTML = `Congratulations!! You WIN!`
-      endGame();
-    }
+      finalMessage.innerHTML = `Congratulations! You WIN!`;
 
-  enterButton.addEventListener('click', () => {
-
-    const inputWord = userInput.value.toUpperCase();
-    if (inputWord.length === 5) {
-      checkWord(inputWord);
-      userInput.value = '';
-    } else {
-      alert('Please enter a 5-letter word');
-    }
+      let currentScore = parseInt(score.innerHTML); //turns into integer
+      let newScore = currentScore + 1;
+      score.textContent = newScore.toString(); //back to string to append to page
     
-  
+      endGame();
+    
+  }
+
+    //When the enter button is clicked, convert input value to uppercase. 
+    //only pass through input as a parameter in function if it is a valid word (ie if it is in the list of words)
+    enterButton.addEventListener('click', () => {
+
+      const inputWord = userInput.value.toUpperCase();
+      if (words.includes(inputWord)){
+        checkWord(inputWord);
+        userInput.value = '';
+
+      //if it is 5 chars long but not in the list of words, alert not a valid word
+      } else if (inputWord.length === 5){
+          alert('Not a valid word');
+
+      //otherwise prompt user to enter 5 letter word
+      } else {
+        alert('Please enter a 5 letter word');
+      }
   
   });
 
 
-
-
-
 //obtained from W4D1, changed textContent to value
-
 let type = () => {
     for (let key of keys) {
       key.addEventListener('click', function() {
@@ -168,13 +193,6 @@ let type = () => {
   }; 
 
 type();
-
-
-//render row
-// update array with guesses
-//take most recent item in guess array, pass into render row function. 
-
-
 
 
   

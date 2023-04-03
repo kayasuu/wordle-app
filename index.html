@@ -9,12 +9,29 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/Users/sude/Desktop/SEI-Course/Project1/wordle-app/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Work+Sans&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="src/style.css">
     </head>
     <body>
         <header id="header">
             <h1>Word Guesser</h1>
             <p>Score: <span id="score">0</span></p>
+
+            <button id="popup-btn">?</button>
+<div id="popup-container">
+  <div id="popup-content">
+    <button id="close-btn">x</button>
+    <h2>How To Play:</h2>
+    <ul>Get 6 chances to guess the 5 letter word!</ul>
+    <ul>The colour of the tiles will change to show how close your guess was to the word.</ul>
+    <ul>If a tile lights up <span class="correct">GREEN</span>, your letter is in the word and in the correct spot.</ul>
+    <ul>If a tile lights up <span class="close">YELLOW</span>, your letter is in the word but is in the wrong spot.</ul>
+    <ul>If a tile lights up <span class="incorrect">RED</span>, your letter is not in the word.</ul>
+  </div>
+</div>
 
         </header>
 
@@ -23,8 +40,9 @@
     <h3 id="finalMessage"</h3></h3>
     <h3 id="buttonAppend"></h3>
         <div id="grid-container">
+            
          </div>
-         <div class="grid-container"></div>
+         <div class="grid-cell"></div>
         </div>
         <input id="user-input" type="text" maxlength="5" oninput="this.value = this.value.toUpperCase()" />
 
@@ -68,7 +86,7 @@
         </section>
 
 
-           <script src="/Users/sude/Desktop/SEI-Course/Project1/wordle-app/wordlist.js"></script>
-        <script src="/Users/sude/Desktop/SEI-Course/Project1/wordle-app/script.js"></script>
+           <script src="src/wordlist.js"></script>
+        <script src="src/script.js"></script>
     </body>
 </html>
