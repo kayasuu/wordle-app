@@ -264,10 +264,13 @@ ul {
 
 @media (max-width: 613px) {
   #grid-container {
-    width: 80%; /* Adjust the width to fit inside the mobile screen */
+    width: 50%; /* Adjust the width to fit inside the mobile screen */
   }
   body {
-    min-width: 80%; /* Adjust the minimum width to fit the mobile screen */
+    width: 50%; /* Adjust the minimum width to fit the mobile screen */
+  }
+  .keyboard{
+    width: 50%;
   }
 }
 
