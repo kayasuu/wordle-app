@@ -33,6 +33,7 @@ section {
     align-content: center;
     flex-shrink: 1;
     background-color: #29444D;
+    min-width: 613px;
     
 }
 
@@ -261,4 +262,23 @@ ul {
   margin: 0;
   padding: 8px;
   font-size: smaller;
+}
+
+@media (max-width: 613px) {
+  #grid-container {
+    width: 90%; /* Adjust the width to fit inside the mobile screen */
+  }
+  body {
+    min-width: 100%; /* Adjust the minimum width to fit the mobile screen */
+  }
+}
+
+/* CSS for screens larger than 613px */
+@media (min-width: 614px) {
+  #grid-container {
+    width: 613px; /* Set the maximum width of the grid container to 613px */
+  }
+  body {
+    min-width: 613px; /* Set the minimum width of the section to 613px */
+  }
 }
