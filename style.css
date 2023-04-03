@@ -264,8 +264,11 @@ ul {
 
 @media (max-width: 561px) {
   #grid-container {
-    width: 80%; /* Adjust the width to fit inside the mobile screen */
-    height: 80%;
+    max-width: 80%;
+    max-height: 80%;
+  }
+  .grid-cell {
+    max-width: 80%;
   }
   body {
     width: 80%; /* Adjust the minimum width to fit the mobile screen */
@@ -297,14 +300,10 @@ ul {
     top: 0;
     right: 0;
 }
-
-
-/* CSS for screens larger than 613px */
-@media (min-width: 649px) {
-  body {
-    min-width: 623px; /* Set the minimum width of the section to 613px */
-  }
-  .keyboard {
-    min-width: 623px;
-  }
+h2, h3, p {
+   font-size: 60%;
+}
+h1 {
+font-size: 20px;
+}
 }
