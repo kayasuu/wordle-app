@@ -33,8 +33,6 @@ section {
     align-content: center;
     flex-shrink: 1;
     background-color: #29444D;
-    min-width: 613px;
-    
 }
 
 
@@ -266,10 +264,10 @@ ul {
 
 @media (max-width: 613px) {
   #grid-container {
-    width: 90%; /* Adjust the width to fit inside the mobile screen */
+    width: 80%; /* Adjust the width to fit inside the mobile screen */
   }
   body {
-    min-width: 100%; /* Adjust the minimum width to fit the mobile screen */
+    min-width: 80%; /* Adjust the minimum width to fit the mobile screen */
   }
 }
 
